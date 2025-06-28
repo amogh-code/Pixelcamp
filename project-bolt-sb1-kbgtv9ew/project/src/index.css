@@ -1,0 +1,181 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Pixel Art & Retro Gaming Styles */
+.pixel-text {
+  font-family: 'Courier New', monospace;
+  letter-spacing: 0.1em;
+  text-shadow: 2px 2px 0px rgba(0,0,0,0.3);
+}
+
+.pixel-border {
+  border-style: solid;
+  border-image: 
+    linear-gradient(45deg, 
+      transparent 0%, transparent 25%, 
+      currentColor 25%, currentColor 75%, 
+      transparent 75%, transparent 100%
+    ) 4;
+  position: relative;
+}
+
+.pixel-border::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57);
+  background-size: 400% 400%;
+  border-radius: inherit;
+  z-index: -1;
+  animation: gradient-shift 4s ease infinite;
+  opacity: 0.7;
+}
+
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.pixel-button {
+  position: relative;
+  border: 3px solid transparent;
+  background: linear-gradient(135deg, currentColor, currentColor) padding-box,
+              linear-gradient(135deg, #ff6b6b, #4ecdc4) border-box;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.3s ease;
+}
+
+.pixel-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+/* Floating Animation Elements */
+.floating-element {
+  position: absolute;
+  animation: float 6s ease-in-out infinite;
+  font-size: 2rem;
+  opacity: 0.8;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  25% { transform: translateY(-20px) rotate(1deg); }
+  50% { transform: translateY(-10px) rotate(0deg); }
+  75% { transform: translateY(-15px) rotate(-1deg); }
+}
+
+.pixel-cloud {
+  font-size: 3rem;
+  animation: float-slow 8s ease-in-out infinite;
+}
+
+@keyframes float-slow {
+  0%, 100% { transform: translateX(0px) translateY(0px); }
+  25% { transform: translateX(10px) translateY(-5px); }
+  50% { transform: translateX(-5px) translateY(-10px); }
+  75% { transform: translateX(-10px) translateY(-5px); }
+}
+
+/* Pixel Tree Background Pattern */
+.pixel-trees {
+  background-image: 
+    radial-gradient(circle at 25% 80%, #2d5016 5px, transparent 5px),
+    radial-gradient(circle at 75% 70%, #4a7c59 3px, transparent 3px),
+    radial-gradient(circle at 40% 90%, #2d5016 4px, transparent 4px),
+    radial-gradient(circle at 90% 85%, #4a7c59 6px, transparent 6px),
+    radial-gradient(circle at 10% 75%, #2d5016 3px, transparent 3px);
+  background-size: 100px 100px, 150px 150px, 80px 80px, 120px 120px, 200px 200px;
+  background-position: 0 0, 50px 0, 20px 50px, 70px 30px, 100px 80px;
+  width: 100%;
+  height: 100%;
+  animation: tree-sway 15s ease-in-out infinite;
+}
+
+@keyframes tree-sway {
+  0%, 100% { background-position: 0 0, 50px 0, 20px 50px, 70px 30px, 100px 80px; }
+  50% { background-position: 5px 0, 55px 0, 25px 50px, 75px 30px, 105px 80px; }
+}
+
+.pixel-logo {
+  animation: logo-bounce 2s ease-in-out infinite;
+  filter: drop-shadow(4px 4px 0px rgba(0,0,0,0.3));
+}
+
+@keyframes logo-bounce {
+  0%, 100% { transform: translateY(0px) scale(1); }
+  50% { transform: translateY(-10px) scale(1.05); }
+}
+
+/* Responsive Improvements */
+@media (max-width: 768px) {
+  .pixel-text {
+    font-size: 0.9em;
+  }
+  
+  .floating-element {
+    font-size: 1.5rem;
+  }
+  
+  .pixel-cloud {
+    font-size: 2rem;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #4a7c59, #2d5016);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #2d5016, #4a7c59);
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+/* Focus states for accessibility */
+button:focus, 
+input:focus, 
+select:focus {
+  outline: 2px solid #4a7c59;
+  outline-offset: 2px;
+}
+
+/* Loading animation for images */
+img {
+  transition: opacity 0.3s ease;
+}
+
+img:not([src]) {
+  opacity: 0;
+}
+
+/* Enhanced hover effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
